@@ -19,4 +19,15 @@ async function historialPorEstrategia(req, res) {
   }
 }
 
-module.exports = { historialGeneral, historialPorEstrategia };
+async function obtener(req, res) {
+  try {
+    const evento = await auditoriaService.obtenerDetalle(req.params.id);
+    if (!evento) return res.status(404).json({ error: 'Evento no encontrado' });
+    res.json(evento);
+  } catch (error) {
+    console.error('Error al obtener detalle de evento:', error);
+    res.status(500).json({ status: 'error', mensaje: 'No se pudo obtener el evento' });
+  }
+}
+
+module.exports = { historialGeneral, historialPorEstrategia, obtener };

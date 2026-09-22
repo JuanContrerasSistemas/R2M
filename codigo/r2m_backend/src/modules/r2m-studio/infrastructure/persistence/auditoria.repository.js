@@ -36,4 +36,9 @@ async function listarTodo() {
   return result.rows.map(mapRow);
 }
 
-module.exports = { registrar, listarPorEstrategia, listarTodo };
+async function buscarPorId(id) {
+  const result = await pool.query('SELECT * FROM eventos_auditoria WHERE id = $1', [id]);
+  return mapRow(result.rows[0]);
+}
+
+module.exports = { registrar, listarPorEstrategia, listarTodo, buscarPorId };

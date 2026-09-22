@@ -12,4 +12,8 @@ async function obtenerHistorialGeneral() {
   return auditoriaRepository.listarTodo();
 }
 
-module.exports = { registrarEvento, obtenerHistorialDeEstrategia, obtenerHistorialGeneral };
+async function obtenerDetalle(id) {
+  return auditoriaRepository.buscarPorId(id);
+}
+
+module.exports = { registrarEvento, obtenerHistorialDeEstrategia, obtenerHistorialGeneral, obtenerDetalle };

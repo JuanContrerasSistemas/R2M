@@ -8,6 +8,9 @@ const pool = require('./shared/config/db');
 
 const estrategiaRoutes = require('./modules/r2m-studio/presentation/estrategia.routes');
 const auditoriaRoutes = require('./modules/r2m-studio/presentation/auditoria.routes');
+const simulacionRoutes = require('./modules/r2m-studio/presentation/simulacion.routes');
+const xaiRoutes = require('./modules/r2m-studio/presentation/xai.routes');
+const analiticaRoutes = require('./modules/r2m-studio/presentation/analitica.routes');
 
 const app = express();
 
@@ -17,6 +20,10 @@ app.use(express.json());
 app.use(apiLimiter);
 app.use('/estrategias', estrategiaRoutes);
 app.use('/auditoria', auditoriaRoutes);
+
+app.use('/simulaciones', simulacionRoutes);
+app.use('/xai', xaiRoutes);
+app.use('/analitica', analiticaRoutes);
 
 app.get('/health', async (req, res) => {
   try {
